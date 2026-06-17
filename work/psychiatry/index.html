@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Northlight Psychiatry · Toronto</title>
+  <meta name="description" content="Northlight Psychiatry. Thoughtful, unhurried psychiatric care, online and in person across Toronto. Concept site by Hayder Hasan." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23f4f5f1'/><text x='50' y='70' font-size='56' font-family='Georgia,serif' fill='%236f8c7f' text-anchor='middle'>N</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root{
+      --paper:#f5f6f1; --ivory:#e9ece3; --ink:#26302c; --muted:#6f7a73;
+      --line:#dde2d7; --calm:#dde7df; --sky:#d4ddd9; --accent:#5f8275;
+      --ease:cubic-bezier(.22,1,.36,1);
+    }
+    *{margin:0;padding:0;box-sizing:border-box;min-width:0}
+    html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;overflow-x:hidden;-webkit-text-size-adjust:100%;text-size-adjust:100%;-webkit-tap-highlight-color:transparent}
+    body{background:var(--paper);color:var(--ink);font-family:"Inter",system-ui,sans-serif;line-height:1.6;overflow-x:hidden}
+    a{color:inherit;text-decoration:none}
+    ::selection{background:var(--accent);color:#fff}
+    .wrap{max-width:1180px;margin:0 auto;padding:0 clamp(20px,5vw,56px)}
+    .label{font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;color:var(--accent);font-weight:600}
+    .serif{font-family:"Cormorant Garamond",Georgia,serif}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:100px;font-weight:500;font-size:.95rem;transition:transform .35s var(--ease),background .3s,color .3s,border-color .3s;border:1px solid transparent}
+    .btn--solid{background:var(--ink);color:var(--paper)}
+    .btn--solid:hover{background:var(--accent)}
+    .btn--ghost{border-color:var(--line);color:var(--ink)}
+    .btn--ghost:hover{border-color:var(--accent);color:var(--accent)}
+
+    /* nav */
+    .nav{position:sticky;top:0;z-index:50;background:rgba(245,246,241,.84);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+    .nav__in{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:18px clamp(20px,5vw,56px)}
+    .brand{font-family:"Cormorant Garamond",serif;font-size:1.5rem;font-weight:600;letter-spacing:.02em;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .brand b{color:var(--accent);font-weight:600}
+    .nav__links{display:flex;gap:30px;font-size:.9rem;color:var(--muted)}
+    .nav__links a{transition:color .25s}
+    .nav__links a:hover{color:var(--ink)}
+    .nav__cta{display:inline-flex;flex:0 0 auto;white-space:nowrap}
+    @media(max-width:780px){.nav__links{display:none}}
+    @media(max-width:430px){.nav__in{padding:14px 18px}.brand{font-size:1.25rem}.nav__cta{padding:10px 16px;font-size:.85rem}}
+
+    /* hero */
+    .hero{padding:clamp(60px,9vw,110px) 0 clamp(50px,7vw,90px)}
+    .hero__grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(28px,5vw,72px);align-items:center}
+    .hero__title{font-size:clamp(3rem,8vw,6.2rem);line-height:.98;font-weight:500;letter-spacing:-.01em;margin:20px 0 22px}
+    .hero__title em{font-style:italic;color:var(--accent)}
+    .hero__sub{font-size:1.15rem;color:var(--muted);max-width:42ch;margin-bottom:34px}
+    .hero__actions{display:flex;flex-wrap:wrap;gap:12px}
+    .hero__meta{margin-top:30px;font-size:.82rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+    .hero__art{position:relative;aspect-ratio:4/5;border-radius:26px;background:
+        radial-gradient(120% 95% at 30% 22%, #eef3ee 0%, var(--calm) 46%, #c4d2c8 100%);
+        overflow:hidden;border:1px solid var(--line)}
+    .hero__art::after{content:"";position:absolute;width:62%;aspect-ratio:1;right:-8%;bottom:-10%;border-radius:50%;
+        background:radial-gradient(circle at 40% 40%, rgba(95,130,117,.30), transparent 70%)}
+    .hero__art span{position:absolute;left:22px;bottom:20px;z-index:1;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:#4f6258}
+    @media(max-width:820px){.hero__grid{grid-template-columns:1fr}.hero__art{aspect-ratio:16/12;border-radius:20px;order:-1}}
+
+    /* sections */
+    section{scroll-margin-top:80px}
+    .sec{padding:clamp(60px,9vw,110px) 0}
+    .sec__head{max-width:60ch;margin-bottom:48px}
+    .sec__head h2{font-size:clamp(2.2rem,5vw,3.6rem);font-weight:500;line-height:1.04;margin-top:12px}
+
+    /* services */
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+    .card{background:var(--paper);padding:34px 30px;transition:background .35s var(--ease)}
+    .card:hover{background:var(--ivory)}
+    .card__n{font-family:"Cormorant Garamond",serif;font-size:1rem;color:var(--accent)}
+    .card h3{font-family:"Cormorant Garamond",serif;font-size:1.7rem;font-weight:600;margin:14px 0 10px}
+    .card p{color:var(--muted);font-size:.96rem}
+    @media(max-width:860px){.grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:540px){.grid{grid-template-columns:1fr}}
+
+    /* approach */
+    .appro{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,72px);align-items:center}
+    .appro__art{aspect-ratio:5/6;border-radius:20px;background:linear-gradient(160deg,var(--sky),#bcccc2);border:1px solid var(--line)}
+    .appro p{color:var(--muted);font-size:1.05rem;margin-top:18px}
+    .appro .lead{font-family:"Cormorant Garamond",serif;font-size:clamp(1.6rem,3vw,2.2rem);color:var(--ink);line-height:1.2}
+    .trust{margin-top:26px;padding-top:22px;border-top:1px solid var(--line);display:flex;gap:38px;flex-wrap:wrap}
+    .trust div span{display:block;font-family:"Cormorant Garamond",serif;font-size:2rem;color:var(--accent)}
+    .trust div small{color:var(--muted);font-size:.85rem}
+    @media(max-width:780px){.appro{grid-template-columns:1fr}.appro__art{aspect-ratio:16/11;order:-1}}
+
+    /* quote */
+    .quote{background:var(--ivory);border-radius:24px;text-align:center;padding:clamp(50px,8vw,90px) clamp(24px,6vw,80px)}
+    .quote p{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:clamp(1.6rem,3.6vw,2.6rem);line-height:1.3;max-width:26ch;margin:0 auto 22px}
+    .quote small{letter-spacing:.16em;text-transform:uppercase;font-size:.78rem;color:var(--muted)}
+
+    /* booking */
+    .book{text-align:center}
+    .book h2{font-size:clamp(2.4rem,6vw,4.4rem);font-weight:500;line-height:1;margin:14px 0 20px}
+    .book__sub{color:var(--muted);max-width:46ch;margin:0 auto 32px;font-size:1.08rem}
+    .info{display:flex;justify-content:center;gap:clamp(24px,6vw,72px);flex-wrap:wrap;margin-top:54px}
+    .info div{text-align:left}
+    .info h4{font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+    .info p{color:var(--ink)}
+
+    /* footer */
+    footer{border-top:1px solid var(--line);margin-top:30px}
+    .foot{display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;align-items:center;padding:30px 0;font-size:.82rem;color:var(--muted)}
+
+    /* reveal */
+    .rv{opacity:0;transform:translateY(22px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+    .rv.in{opacity:1;transform:none}
+    @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="nav__in">
+      <a href="#" class="brand">Northlight <b>Psychiatry</b></a>
+      <nav class="nav__links">
+        <a href="#services">Services</a>
+        <a href="#approach">Approach</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a href="#contact" class="btn btn--solid nav__cta">Book a consultation</a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero__grid">
+      <div class="rv">
+        <span class="label">Psychiatry · Toronto</span>
+        <h1 class="hero__title serif">Care for<br />your <em>mind.</em></h1>
+        <p class="hero__sub">Thoughtful, unhurried psychiatric care. Online and in person, across Toronto.</p>
+        <div class="hero__actions">
+          <a href="#contact" class="btn btn--solid">Book a consultation</a>
+          <a href="#services" class="btn btn--ghost">How we help</a>
+        </div>
+        <p class="hero__meta">Toronto · online and in person</p>
+      </div>
+      <div class="hero__art rv" aria-hidden="true"><span>Your photo here</span></div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="sec" id="services">
+    <div class="wrap">
+      <div class="sec__head rv">
+        <span class="label">How we help</span>
+        <h2 class="serif">Care built around what you are going through.</h2>
+      </div>
+      <div class="grid rv">
+        <div class="card"><div class="card__n">01</div><h3>Anxiety and stress</h3><p>Practical tools to quiet a busy mind.</p></div>
+        <div class="card"><div class="card__n">02</div><h3>Depression and mood</h3><p>Support to feel steady, and like yourself.</p></div>
+        <div class="card"><div class="card__n">03</div><h3>ADHD assessment</h3><p>A clear assessment and a plan that works.</p></div>
+        <div class="card"><div class="card__n">04</div><h3>Trauma and PTSD</h3><p>Gentle, evidence based care, at your pace.</p></div>
+        <div class="card"><div class="card__n">05</div><h3>Medication management</h3><p>Careful prescribing, reviewed together.</p></div>
+        <div class="card"><div class="card__n">06</div><h3>Therapy and counselling</h3><p>Talk therapy alongside medical care.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- APPROACH -->
+  <section class="sec" id="approach" style="background:var(--ivory)">
+    <div class="wrap appro">
+      <div class="appro__art rv" aria-hidden="true"></div>
+      <div class="rv">
+        <span class="label">Our approach</span>
+        <p class="lead">Mental health care should feel human. We take the time to understand the whole picture before suggesting a way forward.</p>
+        <p>Unhurried appointments, clear explanations, and a plan built around you. Online or in person, on your schedule.</p>
+        <div class="trust">
+          <div><span>10+ yrs</span><small>clinical experience</small></div>
+          <div><span>Online</span><small>and in person</small></div>
+          <div><span>Toronto</span><small>and across Ontario</small></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIAL -->
+  <section class="sec">
+    <div class="wrap">
+      <div class="quote rv">
+        <p class="serif">“For the first time, I felt heard and not rushed. I finally had a plan that made sense.”</p>
+        <small>Patient · Toronto</small>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT / BOOKING -->
+  <section class="sec book" id="contact">
+    <div class="wrap">
+      <span class="label rv">Get in touch</span>
+      <h2 class="serif rv">Book a consultation.</h2>
+      <p class="book__sub rv">A first appointment to understand what you are going through and find the right next step. Referrals welcome from your family doctor.</p>
+      <div class="rv"><a href="#" class="btn btn--solid">Book a consultation</a></div>
+      <div class="info rv">
+        <div><h4>Location</h4><p>Bayview Avenue<br />Toronto, ON</p></div>
+        <div><h4>Phone</h4><p>+1 416 000 0000</p></div>
+        <div><h4>Hours</h4><p>Mon to Fri · 9am to 6pm</p></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap foot">
+      <span>© <span id="y">2026</span> Northlight Psychiatry</span>
+      <span>Concept project · sample content</span>
+      <span>Concept by Hayder Hasan</span>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("y").textContent=new Date().getFullYear();
+    var rm=matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var els=document.querySelectorAll(".rv");
+    if("IntersectionObserver"in window&&!rm){
+      var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}})},{threshold:.12,rootMargin:"0px 0px -6% 0px"});
+      els.forEach(function(e){io.observe(e)});
+    } else { els.forEach(function(e){e.classList.add("in")}); }
+  </script>
+</body>
+</html>

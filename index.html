@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hayder Hasan</title>
+  <meta name="description" content="Web designer and developer. Selected work: MatchSpace, OFF HOURS, EMSA Research Platform." />
+
+  <!-- Open Graph / social share. Drop a 1200x630 image at assets/og.jpg to enable. -->
+  <meta property="og:title" content="Hayder Hasan" />
+  <meta property="og:description" content="I build websites and web apps." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="assets/og.jpg" />
+  <meta name="theme-color" content="#0a0a0a" />
+
+  <!-- Favicon, inline so there is zero extra request -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%230a0a0a'/><text x='50' y='70' font-size='58' font-family='Arial' font-weight='900' fill='%23d8d2c4' text-anchor='middle'>H</text></svg>" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <!-- film grain overlay -->
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- custom cursor -->
+  <div class="cursor" aria-hidden="true">
+    <div class="cursor__dot"></div>
+    <div class="cursor__ring"></div>
+  </div>
+
+  <!-- preloader -->
+  <div class="loader" id="loader" aria-hidden="true">
+    <div class="loader__inner">
+      <span class="loader__label">Loading</span>
+      <span class="loader__count" id="loaderCount">0</span>
+    </div>
+    <div class="loader__bar"><span id="loaderBar"></span></div>
+  </div>
+
+  <!-- scroll progress -->
+  <div class="progress" id="progress" aria-hidden="true"></div>
+
+  <!-- NAV -->
+  <header class="nav" id="top">
+    <a href="#top" class="nav__logo" data-magnetic>HH<span class="nav__dot">.</span></a>
+    <nav class="nav__links">
+      <a href="#work" data-magnetic>Work</a>
+      <a href="#about" data-magnetic>About</a>
+      <a href="#contact" data-magnetic>Contact</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <canvas class="hero__canvas" id="grid" aria-hidden="true"></canvas>
+
+    <div class="hero__inner">
+      <p class="hero__eyebrow reveal">Web designer and developer</p>
+      <h1 class="hero__title">
+        <span class="line"><span class="word">Websites</span> <span class="word">and</span></span>
+        <span class="line"><span class="word accent">web&nbsp;apps.</span></span>
+      </h1>
+      <p class="hero__sub reveal">I design and build websites and web apps for brands, clinics and small businesses.</p>
+      <div class="hero__actions reveal">
+        <a href="#work" class="btn btn--accent" data-magnetic>See the work</a>
+        <a href="#contact" class="btn btn--ghost" data-magnetic>Get in touch</a>
+      </div>
+    </div>
+
+    <div class="hero__meta">
+      <span>Based in Cluj</span>
+      <span class="hero__avail"><i></i> Available for work</span>
+    </div>
+
+    <a href="#work" class="hero__scroll" aria-label="Scroll down" data-magnetic>
+      <span>Scroll</span>
+      <svg viewBox="0 0 24 24" width="18" height="18"><path d="M12 4v16M6 14l6 6 6-6" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+    </a>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee__track">
+      <span>See the work :)</span><i>✦</i><span>Made by hand</span><i>✦</i><span>Say hello</span><i>✦</i><span>Let's build something good</span><i>✦</i>
+      <span>See the work :)</span><i>✦</i><span>Made by hand</span><i>✦</i><span>Say hello</span><i>✦</i><span>Let's build something good</span><i>✦</i>
+    </div>
+  </div>
+
+  <!-- WORK -->
+  <section class="section work" id="work">
+    <div class="section__head reveal">
+      <span class="section__index">01</span>
+      <h2 class="section__title">Latest work</h2>
+      <p class="section__lead">Built end to end.</p>
+    </div>
+
+    <ul class="projects">
+
+      <!-- FEATURED: PSYCHIATRY PRACTICE CONCEPT -->
+      <li class="project reveal" data-accent="#6f9486">
+        <a class="project__link" href="work/psychiatry/index.html" target="_blank" rel="noopener" data-magnetic aria-label="Northlight Psychiatry concept">
+          <div class="project__media">
+            <img src="assets/psychiatry.jpg" alt="Northlight Psychiatry, a Toronto psychiatry practice concept" class="mock" loading="lazy" width="1400" height="910" />
+            <span class="project__tag">Concept · Psychiatry</span>
+          </div>
+          <div class="project__body">
+            <div class="project__top">
+              <h3 class="project__name">Northlight Psychiatry</h3>
+              <span class="project__year">2026</span>
+            </div>
+            <p class="project__desc">A concept site for a Toronto psychiatry practice. Calm and reassuring, built around how the practice helps, the approach to care and an easy way to book.</p>
+            <div class="project__stack">
+              <span>Design</span><span>HTML</span><span>CSS</span><span>Responsive</span>
+            </div>
+            <span class="project__cta">View concept <svg viewBox="0 0 24 24" width="14" height="14"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2"/></svg></span>
+          </div>
+        </a>
+      </li>
+
+      <!-- PROJECT 1 -->
+      <li class="project reveal" data-accent="#7c9cff">
+        <a class="project__link" href="https://matchspace.vercel.app" target="_blank" rel="noopener" data-magnetic aria-label="MatchSpace">
+          <div class="project__media">
+            <img src="assets/matchspace.jpg" alt="MatchSpace landing page" class="mock" loading="lazy" width="1400" height="910" />
+            <span class="project__tag">Web app</span>
+          </div>
+          <div class="project__body">
+            <div class="project__top">
+              <h3 class="project__name">MatchSpace</h3>
+              <span class="project__year">2026</span>
+            </div>
+            <p class="project__desc">Curated matching events. A question bank feeds the matching engine, guests get a QR ticket and check in at the door. Full admin suite.</p>
+            <div class="project__stack">
+              <span>Next.js</span><span>React</span><span>TypeScript</span><span>Supabase</span><span>Framer Motion</span>
+            </div>
+            <span class="project__cta">View project <svg viewBox="0 0 24 24" width="14" height="14"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2"/></svg></span>
+          </div>
+        </a>
+      </li>
+
+      <!-- PROJECT 2 -->
+      <li class="project reveal" data-accent="#d8d2c4">
+        <a class="project__link" href="work/off-hours/index.html" target="_blank" rel="noopener" data-magnetic aria-label="OFF HOURS">
+          <div class="project__media">
+            <img src="assets/off-hours.jpg" alt="OFF HOURS landing page" class="mock" loading="lazy" width="1400" height="910" />
+            <span class="project__tag">Brand site</span>
+          </div>
+          <div class="project__body">
+            <div class="project__top">
+              <h3 class="project__name">OFF HOURS</h3>
+              <span class="project__year">2026</span>
+            </div>
+            <p class="project__desc">A nightlife collective landing page. Near monochrome, with a guest list form and big poster type.</p>
+            <div class="project__stack">
+              <span>HTML</span><span>CSS</span><span>JavaScript</span><span>No framework</span>
+            </div>
+            <span class="project__cta">View project <svg viewBox="0 0 24 24" width="14" height="14"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2"/></svg></span>
+          </div>
+        </a>
+      </li>
+
+      <!-- PROJECT 3 -->
+      <li class="project reveal" data-accent="#5fd0a0">
+        <a class="project__link" href="work/emsa/index.html" target="_blank" rel="noopener" data-magnetic aria-label="EMSA Research Platform">
+          <div class="project__media">
+            <img src="assets/emsa.jpg" alt="EMSA Research Platform home page" class="mock" loading="lazy" width="1400" height="910" />
+            <span class="project__tag">Platform</span>
+          </div>
+          <div class="project__body">
+            <div class="project__top">
+              <h3 class="project__name">EMSA Research Platform</h3>
+              <span class="project__year">2026</span>
+            </div>
+            <p class="project__desc">A research platform for a university department. Students apply to projects, professors rank and shortlist applicants.</p>
+            <div class="project__stack">
+              <span>Next.js</span><span>TypeScript</span><span>Tailwind</span><span>Supabase</span><span>Postgres</span>
+            </div>
+            <span class="project__cta">View project <svg viewBox="0 0 24 24" width="14" height="14"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2"/></svg></span>
+          </div>
+        </a>
+      </li>
+
+    </ul>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section about" id="about">
+    <div class="section__head reveal">
+      <span class="section__index">02</span>
+      <h2 class="section__title">About</h2>
+    </div>
+
+    <div class="about__bio reveal">
+      <p class="about__lead">Websites, start to finish.</p>
+      <p>I take a rough idea and hand it back live on the internet.</p>
+      <p>When I am not building, I am studying medicine or out running.</p>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section contact" id="contact">
+    <div class="contact__inner reveal">
+      <span class="section__index">03</span>
+      <h2 class="contact__title">Have something<br />you want built?</h2>
+      <p class="contact__lead">Open to freelance work. Tell me what you have in mind.</p>
+      <a class="contact__mail" href="mailto:hayderahasan@icloud.com" data-magnetic>hayderahasan@icloud.com</a>
+    </div>
+    <footer class="footer">
+      <span>© <span id="year">2026</span> Hayder Hasan</span>
+      <span>Built from scratch. No template.</span>
+      <a href="#top" data-magnetic>Back to top ↑</a>
+    </footer>
+  </section>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

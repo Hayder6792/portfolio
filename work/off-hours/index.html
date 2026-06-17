@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OFF HOURS</title>
+  <meta name="description" content="OFF HOURS. After the day ends. Get on the list." />
+
+  <!-- Open Graph / social share (replace assets/og.jpg with your own 1200x630 image) -->
+  <meta property="og:title" content="OFF HOURS" />
+  <meta property="og:description" content="After the day ends. Get on the list." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="assets/og.jpg" />
+  <meta name="theme-color" content="#0a0a0a" />
+
+  <!-- Favicon (inline so there's zero extra request / no missing file) -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%230a0a0a'/><text x='50' y='68' font-size='62' font-family='Arial' font-weight='900' fill='%23d8d2c4' text-anchor='middle'>O</text></svg>" />
+
+  <!-- Fonts: Anton for poster headlines, Space Grotesk for everything else (both free) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <!-- film grain overlay -->
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- NAV -->
+  <header class="nav" id="top">
+    <a href="#top" class="nav__logo">OFF<span>HOURS</span></a>
+    <a href="#list" class="nav__cta">Get on the list</a>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero__marquee" aria-hidden="true">
+      <div class="hero__marquee-track">
+        OFF HOURS · OFF HOURS · OFF HOURS · OFF HOURS · OFF HOURS · OFF HOURS ·&nbsp;
+        OFF HOURS · OFF HOURS · OFF HOURS · OFF HOURS · OFF HOURS · OFF HOURS ·&nbsp;
+      </div>
+    </div>
+
+    <div class="hero__inner">
+      <p class="hero__eyebrow">Low key, for now</p>
+      <h1 class="hero__title">
+        AFTER<br />THE DAY<br /><span class="accent">ENDS.</span>
+      </h1>
+      <div class="hero__actions">
+        <a href="#list" class="btn btn--accent">Get on the list</a>
+      </div>
+      <p class="hero__note">Free for now. No cover.</p>
+    </div>
+
+    <a href="#list" class="hero__scroll" aria-label="Scroll down">↓</a>
+  </section>
+
+  <!-- ONBOARDING -->
+  <section class="section list" id="list">
+    <h2 class="list__title">Get on the list</h2>
+    <p class="list__note">No spam. Just the next one.</p>
+
+    <form class="form" id="list-form" novalidate>
+      <div class="form__row">
+        <label for="name">Name *</label>
+        <input id="name" name="name" type="text" autocomplete="name" required placeholder="What we call you" />
+      </div>
+      <div class="form__row">
+        <label for="email">Email *</label>
+        <input id="email" name="email" type="email" autocomplete="email" required placeholder="you@email.com" />
+      </div>
+      <div class="form__row">
+        <label for="instagram">Instagram</label>
+        <input id="instagram" name="instagram" type="text" placeholder="@yourhandle" />
+      </div>
+      <div class="form__row">
+        <label for="referral">How did you hear about us?</label>
+        <select id="referral" name="referral">
+          <option value="">Pick one</option>
+          <option>A friend</option>
+          <option>Instagram</option>
+          <option>At a meet up</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn--accent form__submit">Put me on the list</button>
+      <p class="form__status" id="list-status" role="status" aria-live="polite"></p>
+    </form>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer__brand">OFF<span>HOURS</span></div>
+    <div class="footer__links">
+      <a href="#" id="insta-link-foot" target="_blank" rel="noopener">Instagram</a>
+      <a href="#list">Get on the list</a>
+      <a href="#" id="email-link">Contact</a>
+    </div>
+    <p class="footer__fine">© <span id="year"></span> OFF HOURS. After the day ends.</p>
+  </footer>
+
+  <script src="js/config.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

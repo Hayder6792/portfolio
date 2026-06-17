@@ -1,0 +1,16 @@
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+
+# Dependencies (none required, but just in case you add tooling later)
+node_modules/
+
+# Local env / secrets — never commit form keys or tokens
+.env
+.env.*
+
+# Build output (deploy-safe copy, regenerate with ./build-deploy.sh)
+dist/

@@ -1,0 +1,31 @@
+{
+  "_comment": "Edit this file to post a meet up. Copy a block, change the values. `date` is YYYY-MM-DD. Past dates auto show as 'past'. Set `capacity` to a number or leave null. Set `soldOut` true to close RSVPs.",
+  "events": [
+    {
+      "id": "first-one",
+      "title": "The first one",
+      "date": "2026-07-18",
+      "time": "from 9pm, no rush",
+      "venue": "Address when you RSVP",
+      "city": "Near campus",
+      "tags": ["Free", "Small"],
+      "blurb": "Nothing fancy. A few of us, some music, see who turns up.",
+      "free": true,
+      "capacity": 40,
+      "soldOut": false
+    },
+    {
+      "id": "slow-sunday",
+      "title": "Slow Sunday",
+      "date": "2026-08-09",
+      "time": "late afternoon onward",
+      "venue": "Address when you RSVP",
+      "city": "In town",
+      "tags": ["Free"],
+      "blurb": "Quiet start, easy pace, see where it goes.",
+      "free": true,
+      "capacity": 50,
+      "soldOut": false
+    }
+  ]
+}
