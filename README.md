@@ -43,12 +43,11 @@ these later. Not needed to start.
 Everything is editable in `index.html`. The likely edits:
 
 - **Project links.** Each card opens its landing page in a new tab:
-  - MatchSpace points at the live deploy, `https://matchspace.vercel.app`.
-  - OFF HOURS and EMSA open bundled landing pages under `work/` (so they work even
-    before those two are deployed). When you deploy them, swap the card `href` from
-    `work/off-hours/index.html` / `work/emsa/index.html` to the real live URL.
-- **Screenshots.** Each card already uses a real screenshot of the actual app,
-  stored in `assets/` (`matchspace.jpg`, `off-hours.jpg`, `emsa.jpg`). To refresh
+  - MatchSpace → `https://matchspace.vercel.app`, UMF Cluj Research → `https://umfclujresearch.org` (both live).
+  - OFF HOURS opens a bundled landing page under `work/off-hours/`. When it's deployed,
+    swap that card's `href` to the real live URL.
+- **Screenshots.** Each card uses a real screenshot of the actual app, stored in
+  `assets/` (`psychiatry.jpg`, `matchspace.jpg`, `off-hours.jpg`, `umfcluj.jpg`). To refresh
   one, run the app, take a new shot at roughly a 1600x1040 ratio, and overwrite the
   file. They are sized to the card ratio so they sit flush with no awkward cropping.
 - **Bio and name.** The About section and the hero copy are plain text near the
@@ -67,8 +66,7 @@ portfolio/
 ├── assets/         project screenshots and og.jpg
 └── work/           landing pages opened by the cards
     ├── psychiatry/ Northlight Psychiatry, a Toronto psychiatry concept (featured)
-    ├── off-hours/  the real static OFF HOURS site
-    └── emsa/       a static snapshot of the EMSA landing page
+    └── off-hours/  the real static OFF HOURS site
 ```
 
 The first project, **Northlight Psychiatry**, is a concept site built to show the kind

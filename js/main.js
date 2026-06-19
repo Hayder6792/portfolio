@@ -181,15 +181,51 @@
     if (canHover) animate(); else draw();
   }
 
+  /* ---------- contact form ---------- */
+  const cform = document.getElementById("contactForm");
+  if (cform) {
+    const status = document.getElementById("contactStatus");
+    cform.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const action = cform.getAttribute("action") || "";
+      if (action.indexOf("REPLACE") !== -1) {
+        // form backend not connected yet: fall back to composing an email
+        const val = (n) => { const el = cform.querySelector('[name="' + n + '"]'); return el ? el.value : ""; };
+        const subject = encodeURIComponent("Enquiry from " + (val("name") || "your site"));
+        const body = encodeURIComponent((val("message") || "") + "\n\nFrom: " + (val("email") || ""));
+        window.location.href = "mailto:hayderahasan@icloud.com?subject=" + subject + "&body=" + body;
+        status.textContent = "Opening your email app…";
+        return;
+      }
+      if (!cform.checkValidity()) { status.textContent = "Please fill in every field."; return; }
+      status.textContent = "Sending…";
+      try {
+        const res = await fetch(action, {
+          method: "POST",
+          body: new FormData(cform),
+          headers: { Accept: "application/json" },
+        });
+        if (res.ok) { cform.reset(); status.textContent = "Thanks. I will get back to you soon."; }
+        else { status.textContent = "Something went wrong. Email me at hayderahasan@icloud.com."; }
+      } catch (err) {
+        status.textContent = "Something went wrong. Email me at hayderahasan@icloud.com.";
+      }
+    });
+  }
+
   /* ---------- smooth anchor offset for fixed nav ---------- */
   document.querySelectorAll('a[href^="#"]').forEach((a) => {
     a.addEventListener("click", (e) => {
       const id = a.getAttribute("href");
-      if (id === "#" || id.length < 2) return;
+      if (id.length < 2) return;
+      const behavior = reduceMotion ? "auto" : "smooth";
+      // #top is the fixed nav, which scrollIntoView treats as always visible, so jump to page top
+      if (id === "#top") { e.preventDefault(); window.scrollTo({ top: 0, behavior: behavior }); return; }
+      if (id === "#") return;
       const target = document.querySelector(id);
       if (!target) return;
       e.preventDefault();
-      target.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth" });
+      target.scrollIntoView({ behavior: behavior });
     });
   });
 })();

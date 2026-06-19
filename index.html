@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Hayder Hasan</title>
-  <meta name="description" content="Web designer and developer. Selected work: MatchSpace, OFF HOURS, EMSA Research Platform." />
+  <meta name="description" content="Web designer and developer. Selected work: a Toronto psychiatry concept, MatchSpace, and the UMF Cluj Research Platform." />
 
   <!-- Open Graph / social share. Drop a 1200x630 image at assets/og.jpg to enable. -->
   <meta property="og:title" content="Hayder Hasan" />
@@ -142,40 +142,19 @@
         </a>
       </li>
 
-      <!-- PROJECT 2 -->
-      <li class="project reveal" data-accent="#d8d2c4">
-        <a class="project__link" href="work/off-hours/index.html" target="_blank" rel="noopener" data-magnetic aria-label="OFF HOURS">
-          <div class="project__media">
-            <img src="assets/off-hours.jpg" alt="OFF HOURS landing page" class="mock" loading="lazy" width="1400" height="910" />
-            <span class="project__tag">Brand site</span>
-          </div>
-          <div class="project__body">
-            <div class="project__top">
-              <h3 class="project__name">OFF HOURS</h3>
-              <span class="project__year">2026</span>
-            </div>
-            <p class="project__desc">A nightlife collective landing page. Near monochrome, with a guest list form and big poster type.</p>
-            <div class="project__stack">
-              <span>HTML</span><span>CSS</span><span>JavaScript</span><span>No framework</span>
-            </div>
-            <span class="project__cta">View project <svg viewBox="0 0 24 24" width="14" height="14"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2"/></svg></span>
-          </div>
-        </a>
-      </li>
-
       <!-- PROJECT 3 -->
-      <li class="project reveal" data-accent="#5fd0a0">
-        <a class="project__link" href="work/emsa/index.html" target="_blank" rel="noopener" data-magnetic aria-label="EMSA Research Platform">
+      <li class="project reveal" data-accent="#818cf8">
+        <a class="project__link" href="https://umfclujresearch.org" target="_blank" rel="noopener" data-magnetic aria-label="UMF Cluj Research Platform">
           <div class="project__media">
-            <img src="assets/emsa.jpg" alt="EMSA Research Platform home page" class="mock" loading="lazy" width="1400" height="910" />
+            <img src="assets/umfcluj.jpg" alt="UMF Cluj Research Platform home page" class="mock" loading="lazy" width="1400" height="910" />
             <span class="project__tag">Platform</span>
           </div>
           <div class="project__body">
             <div class="project__top">
-              <h3 class="project__name">EMSA Research Platform</h3>
+              <h3 class="project__name">UMF Cluj Research Platform</h3>
               <span class="project__year">2026</span>
             </div>
-            <p class="project__desc">A research platform for a university department. Students apply to projects, professors rank and shortlist applicants.</p>
+            <p class="project__desc">The official research platform for UMF Cluj, a university of medicine and pharmacy. Students browse the university's open research projects and apply to join.</p>
             <div class="project__stack">
               <span>Next.js</span><span>TypeScript</span><span>Tailwind</span><span>Supabase</span><span>Postgres</span>
             </div>
@@ -208,6 +187,18 @@
       <h2 class="contact__title">Have something<br />you want built?</h2>
       <p class="contact__lead">Open to freelance work. Tell me what you have in mind.</p>
       <a class="contact__mail" href="mailto:hayderahasan@icloud.com" data-magnetic>hayderahasan@icloud.com</a>
+
+      <form class="contact__form" id="contactForm" action="https://formspree.io/f/REPLACE_WITH_ID" method="POST" novalidate>
+        <div class="contact__row">
+          <input class="contact__field" type="text" name="name" placeholder="Your name" autocomplete="name" required />
+          <input class="contact__field" type="email" name="email" placeholder="Your email" autocomplete="email" required />
+        </div>
+        <textarea class="contact__field" name="message" rows="4" placeholder="What do you have in mind?" required></textarea>
+        <div class="contact__send">
+          <button type="submit" class="btn btn--accent" data-magnetic>Send message</button>
+          <p class="contact__status" id="contactStatus" role="status" aria-live="polite"></p>
+        </div>
+      </form>
     </div>
     <footer class="footer">
       <span>© <span id="year">2026</span> Hayder Hasan</span>
