@@ -26,11 +26,11 @@ DNS only / grey cloud).
 
 | File | What is in it |
 |---|---|
-| `index.html` | The whole page. Featured work, the smaller builds index, about, contact. |
+| `index.html` | The whole page. Featured work, about, contact. |
 | `css/styles.css` | All styling. Design tokens live in `:root` at the top. |
 | `js/main.js` | Scroll reveal, the nav that settles on scroll, and the copy email button. |
 | `assets/` | Project screenshots plus `og.jpg`, the social share card. |
-| `work/` | Two bundled pages that are not hosted anywhere else: the Northlight Psychiatry concept and OFF HOURS. |
+| `work/` | Bundled pages not hosted anywhere else. `psychiatry/` is linked from the page. `off-hours/` is kept but no longer linked, along with `assets/off-hours.jpg`. |
 
 Type is Instrument Serif for display and Inter for everything else, both from
 Google Fonts. The palette is warm near black with a bone foreground. Each
@@ -61,6 +61,7 @@ Two rules the copy follows on purpose:
 
 1. **No dashes.** No em dashes, en dashes or hyphens as punctuation anywhere in
    visible copy. Use periods and commas instead.
-2. **Every project is labelled for what it actually is.** Client build, demo,
-   concept, or speculative. The smaller builds were not commissioned and the
-   page says so. Do not let this drift.
+2. **Every project is labelled for what it actually is.** Client build, demo, or
+   concept, stated on the card itself. re.born is pre launch, Concourse runs on
+   invented data, UMF Cluj Research is student built and not endorsed by the
+   university. Do not let this drift.
