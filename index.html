@@ -1,18 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ro">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Hayder Hasan</title>
-  <meta name="description" content="Web designer and developer in Cluj. Selected work: re.born, Concourse, MatchSpace, the UMF Cluj research platform and a Toronto psychiatry concept." />
+  <meta name="description" id="metaDesc" content="Web designer și developer în Cluj. Proiecte recente: re.born, Concourse, MatchSpace, UMF Cluj Research și un concept pentru un cabinet de psihiatrie." />
 
   <meta property="og:title" content="Hayder Hasan" />
-  <meta property="og:description" content="Websites and web apps, built end to end." />
+  <meta property="og:description" content="Site-uri și aplicații web." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://hayderahasan.com" />
   <meta property="og:image" content="https://hayderahasan.com/assets/og.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="theme-color" content="#100f0d" />
+
+  <link rel="alternate" hreflang="ro" href="https://hayderahasan.com/" />
+  <link rel="alternate" hreflang="en" href="https://hayderahasan.com/?lang=en" />
+  <link rel="alternate" hreflang="x-default" href="https://hayderahasan.com/" />
 
   <!-- Favicon, inline so there is zero extra request -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%23100f0d'/><text x='50' y='69' font-size='54' font-family='Georgia,serif' fill='%23ded5c2' text-anchor='middle'>H</text></svg>" />
@@ -29,12 +33,19 @@
 
   <!-- NAV -->
   <header class="nav" id="nav">
-    <a href="#top" class="nav__logo">Hayder Hasan<span class="nav__dot">.</span></a>
-    <nav class="nav__links">
-      <a href="#work">Work</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
-    </nav>
+    <a href="#top" class="nav__logo" aria-label="Hayder Hasan"><span class="nav__logo-full">Hayder Hasan</span><span class="nav__logo-short" aria-hidden="true">HH</span><span class="nav__dot">.</span></a>
+    <div class="nav__right">
+      <nav class="nav__links">
+        <a href="#work" data-en="Work" data-ro="Proiecte">Proiecte</a>
+        <a href="#about" data-en="About" data-ro="Despre">Despre</a>
+        <a href="#contact" data-en="Contact" data-ro="Contact">Contact</a>
+      </nav>
+      <div class="lang" id="lang" role="group" data-aria-en="Language" data-aria-ro="Limbă" aria-label="Limbă">
+        <button type="button" class="lang__btn" data-lang="ro">RO</button>
+        <span class="lang__sep" aria-hidden="true"></span>
+        <button type="button" class="lang__btn" data-lang="en">EN</button>
+      </div>
+    </div>
   </header>
 
   <!-- HERO -->
@@ -42,146 +53,146 @@
     <div class="hero__glow" aria-hidden="true"></div>
 
     <div class="hero__inner">
-      <p class="label hero__eyebrow">Web designer and developer</p>
-      <h1 class="hero__title">Websites and web apps, built <em>end to end</em>.</h1>
-      <p class="hero__sub">I take a rough idea and hand it back live on the internet. Shops, platforms, booking sites, and the quiet admin tools that keep them running.</p>
+      <p class="label hero__eyebrow" data-en="Web designer and developer" data-ro="Web designer și developer">Web designer și developer</p>
+      <h1 class="hero__title" data-en="Websites and <em>web apps</em>." data-ro="Site-uri și <em>aplicații web</em>.">Site-uri și <em>aplicații web</em>.</h1>
+      <p class="hero__sub" data-en="I design and build them from the first idea to the live site." data-ro="Le proiectez și le construiesc, de la prima idee până la site-ul live.">Le proiectez și le construiesc, de la prima idee până la site-ul live.</p>
       <div class="hero__actions">
-        <a href="#work" class="btn btn--accent">See the work</a>
-        <a href="#contact" class="btn btn--ghost">Get in touch</a>
+        <a href="#work" class="btn btn--accent" data-en="See the work" data-ro="Vezi proiectele">Vezi proiectele</a>
+        <a href="#contact" class="btn btn--ghost" data-en="Get in touch" data-ro="Scrie-mi">Scrie-mi</a>
       </div>
     </div>
 
     <div class="hero__meta">
-      <span>Based in Cluj</span>
-      <span class="hero__avail"><i></i> Available for work</span>
-      <span>Design, front end, back end</span>
+      <span>Cluj-Napoca</span>
+      <span class="hero__avail"><i></i><span data-en="Available for work" data-ro="Disponibil pentru proiecte">Disponibil pentru proiecte</span></span>
+      <span data-en="Design, front end, back end" data-ro="Design, front end, back end">Design, front end, back end</span>
     </div>
   </section>
 
   <!-- QUIET TICKER -->
   <div class="ticker" aria-hidden="true">
     <div class="ticker__track">
-      <span>built end to end</span><i>&bull;</i><span>no templates</span><i>&bull;</i><span>shops, platforms and booking tools</span><i>&bull;</i><span>written by hand</span><i>&bull;</i><span>based in Cluj</span><i>&bull;</i>
-      <span>built end to end</span><i>&bull;</i><span>no templates</span><i>&bull;</i><span>shops, platforms and booking tools</span><i>&bull;</i><span>written by hand</span><i>&bull;</i><span>based in Cluj</span><i>&bull;</i>
+      <span data-en="written by hand" data-ro="scris de mână">scris de mână</span><i>&bull;</i><span data-en="no templates" data-ro="fără template-uri">fără template-uri</span><i>&bull;</i><span data-en="shops and platforms" data-ro="magazine și platforme">magazine și platforme</span><i>&bull;</i><span>Cluj-Napoca</span><i>&bull;</i>
+      <span data-en="written by hand" data-ro="scris de mână">scris de mână</span><i>&bull;</i><span data-en="no templates" data-ro="fără template-uri">fără template-uri</span><i>&bull;</i><span data-en="shops and platforms" data-ro="magazine și platforme">magazine și platforme</span><i>&bull;</i><span>Cluj-Napoca</span><i>&bull;</i>
     </div>
   </div>
 
   <!-- WORK -->
   <section class="section work" id="work">
     <div class="section__head reveal">
-      <span class="label">01 &nbsp;Selected work</span>
-      <h2 class="section__title">Things I designed and built.</h2>
-      <p class="section__lead">Live links where the work is public. Each one is labelled for what it actually is, so you know what you are looking at.</p>
+      <span class="label" data-en="01 &nbsp;Work" data-ro="01 &nbsp;Proiecte">01 &nbsp;Proiecte</span>
+      <h2 class="section__title" data-en="Recent work." data-ro="Proiecte recente.">Proiecte recente.</h2>
+      <p class="section__lead" data-en="Five projects. Each one says what it actually is." data-ro="Cinci proiecte. Fiecare spune exact ce este.">Cinci proiecte. Fiecare spune exact ce este.</p>
     </div>
 
     <ul class="projects">
 
       <!-- RE.BORN -->
       <li class="project reveal" data-accent="#dd6a52">
-        <a class="project__link" href="https://re-born.ro" target="_blank" rel="noopener" aria-label="re.born, opens in a new tab">
+        <a class="project__link" href="https://re-born.ro" target="_blank" rel="noopener" data-aria-en="re.born, opens in a new tab" data-aria-ro="re.born, se deschide într-o filă nouă" aria-label="re.born, se deschide într-o filă nouă">
           <div class="project__media">
-            <img src="assets/reborn.jpg" alt="The re.born catalog page, a grid of one of a kind restyled blazers" class="mock" loading="lazy" width="1400" height="910" />
-            <span class="project__tag">Client build &middot; Fashion</span>
+            <img src="assets/reborn.jpg" alt="re.born" class="mock" loading="lazy" width="1400" height="910" />
+            <span class="project__tag" data-en="Client build &middot; Fashion" data-ro="Proiect client &middot; Modă">Proiect client &middot; Modă</span>
           </div>
           <div class="project__body">
             <div class="project__top">
               <h3 class="project__name">re.born</h3>
               <span class="project__year">2026</span>
             </div>
-            <p class="project__desc">A shop for a Romanian upcycled fashion label. Every piece is one of a kind, so the stock model is single item all the way down: checkout puts a half hour hold on a piece, a compare and swap makes it impossible for two people to buy the same blazer, and if a double sale ever slipped through, a webhook refunds it on its own.</p>
-            <p class="project__note">Built for the brand. The shop opens in October 2026.</p>
+            <p class="project__desc" data-en="An online shop for a Romanian upcycled fashion label. Every piece is one of a kind, so the shop holds your piece for half an hour while you pay, and two people can never buy the same one." data-ro="Magazin online pentru un brand românesc de modă upcycled. Fiecare piesă este unicat, așa că magazinul îți ține piesa o jumătate de oră cât timp plătești, iar doi oameni nu pot cumpăra aceeași piesă.">Magazin online pentru un brand românesc de modă upcycled. Fiecare piesă este unicat, așa că magazinul îți ține piesa o jumătate de oră cât timp plătești, iar doi oameni nu pot cumpăra aceeași piesă.</p>
+            <p class="project__note" data-en="Built for the brand. The shop opens in October 2026." data-ro="Construit pentru brand. Magazinul se deschide în octombrie 2026.">Construit pentru brand. Magazinul se deschide în octombrie 2026.</p>
             <div class="project__stack">
               <span>Next.js</span><span>TypeScript</span><span>Sanity CMS</span><span>Stripe</span><span>Tailwind</span>
             </div>
-            <span class="project__cta">Visit the site <svg viewBox="0 0 24 24" width="14" height="14"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2"/></svg></span>
+            <span class="project__cta" data-en="Visit the site <svg viewBox=&quot;0 0 24 24&quot; width=&quot;14&quot; height=&quot;14&quot;><path d=&quot;M5 12h14M13 6l6 6-6 6&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot;/></svg>" data-ro="Vezi site-ul <svg viewBox=&quot;0 0 24 24&quot; width=&quot;14&quot; height=&quot;14&quot;><path d=&quot;M5 12h14M13 6l6 6-6 6&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot;/></svg>">Vezi site-ul <svg viewBox="0 0 24 24" width="14" height="14"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2"/></svg></span>
           </div>
         </a>
       </li>
 
       <!-- CONCOURSE -->
       <li class="project reveal" data-accent="#ffc300">
-        <a class="project__link" href="https://concourse-roan.vercel.app" target="_blank" rel="noopener" aria-label="Concourse, opens in a new tab">
+        <a class="project__link" href="https://concourse-roan.vercel.app" target="_blank" rel="noopener" data-aria-en="Concourse, opens in a new tab" data-aria-ro="Concourse, se deschide într-o filă nouă" aria-label="Concourse, se deschide într-o filă nouă">
           <div class="project__media">
-            <img src="assets/concourse.jpg" alt="The Concourse operations dashboard, tracking guest arrivals and transfers" class="mock" loading="lazy" width="1400" height="910" />
-            <span class="project__tag">Demo &middot; Operations</span>
+            <img src="assets/concourse.jpg" alt="Concourse" class="mock" loading="lazy" width="1400" height="910" />
+            <span class="project__tag" data-en="Demo &middot; Operations" data-ro="Demo &middot; Operațiuni">Demo &middot; Operațiuni</span>
           </div>
           <div class="project__body">
             <div class="project__top">
               <h3 class="project__name">Concourse</h3>
               <span class="project__year">2026</span>
             </div>
-            <p class="project__desc">A control room for the people running a tennis tournament week. Flights, drivers, rooming, accreditation and guest requests in one live board, so a coordinator can see who has landed, who has nobody assigned and what is running late.</p>
-            <p class="project__note">A working pitch demo. Every guest and booking in it is invented.</p>
+            <p class="project__desc" data-en="A control room for the team running a tennis tournament. Flights, drivers, rooms and guest requests on one live board, so nobody gets forgotten at the airport." data-ro="Un panou de control pentru echipa care organizează un turneu de tenis. Zboruri, șoferi, cazare și cereri, toate într-un singur loc, ca să nu rămână nimeni uitat la aeroport.">Un panou de control pentru echipa care organizează un turneu de tenis. Zboruri, șoferi, cazare și cereri, toate într-un singur loc, ca să nu rămână nimeni uitat la aeroport.</p>
+            <p class="project__note" data-en="A demo. Every guest and booking in it is invented." data-ro="Un demo. Toți invitații și toate rezervările sunt inventate.">Un demo. Toți invitații și toate rezervările sunt inventate.</p>
             <div class="project__stack">
-              <span>Next.js</span><span>TypeScript</span><span>Tailwind</span><span>Dashboard UI</span>
+              <span>Next.js</span><span>TypeScript</span><span>Tailwind</span>
             </div>
-            <span class="project__cta">Open the demo <svg viewBox="0 0 24 24" width="14" height="14"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2"/></svg></span>
+            <span class="project__cta" data-en="Open the demo <svg viewBox=&quot;0 0 24 24&quot; width=&quot;14&quot; height=&quot;14&quot;><path d=&quot;M5 12h14M13 6l6 6-6 6&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot;/></svg>" data-ro="Deschide demo-ul <svg viewBox=&quot;0 0 24 24&quot; width=&quot;14&quot; height=&quot;14&quot;><path d=&quot;M5 12h14M13 6l6 6-6 6&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot;/></svg>">Deschide demo-ul <svg viewBox="0 0 24 24" width="14" height="14"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2"/></svg></span>
           </div>
         </a>
       </li>
 
       <!-- MATCHSPACE -->
       <li class="project reveal" data-accent="#cfa3c2">
-        <a class="project__link" href="https://matchspace.ro" target="_blank" rel="noopener" aria-label="MatchSpace, opens in a new tab">
+        <a class="project__link" href="https://matchspace.ro" target="_blank" rel="noopener" data-aria-en="MatchSpace, opens in a new tab" data-aria-ro="MatchSpace, se deschide într-o filă nouă" aria-label="MatchSpace, se deschide într-o filă nouă">
           <div class="project__media">
-            <img src="assets/matchspace.jpg" alt="The MatchSpace landing page" class="mock" loading="lazy" width="1400" height="910" />
-            <span class="project__tag">Web app &middot; Events</span>
+            <img src="assets/matchspace.jpg" alt="MatchSpace" class="mock" loading="lazy" width="1400" height="910" />
+            <span class="project__tag" data-en="Web app &middot; Events" data-ro="Aplicație web &middot; Evenimente">Aplicație web &middot; Evenimente</span>
           </div>
           <div class="project__body">
             <div class="project__top">
               <h3 class="project__name">MatchSpace</h3>
               <span class="project__year">2026</span>
             </div>
-            <p class="project__desc">Curated matching events. A weighted question bank feeds the matching engine, guests get a QR ticket, and the door team checks them in from a phone. Full admin suite behind it for running the night.</p>
-            <p class="project__note">Built together with Dragos Hapaianu.</p>
+            <p class="project__desc" data-en="Curated matching events. Guests answer a few questions, the app pairs them up, and the door team checks them in with a QR ticket." data-ro="Evenimente de matching. Invitații răspund la câteva întrebări, aplicația îi pune în pereche, iar la intrare sunt verificați cu un bilet QR.">Evenimente de matching. Invitații răspund la câteva întrebări, aplicația îi pune în pereche, iar la intrare sunt verificați cu un bilet QR.</p>
+            <p class="project__note" data-en="Built together with Dragoș Hapaianu." data-ro="Construit împreună cu Dragoș Hapaianu.">Construit împreună cu Dragoș Hapaianu.</p>
             <div class="project__stack">
-              <span>Next.js</span><span>React</span><span>TypeScript</span><span>Supabase</span><span>Framer Motion</span>
+              <span>Next.js</span><span>TypeScript</span><span>Supabase</span><span>Stripe</span>
             </div>
-            <span class="project__cta">Visit the site <svg viewBox="0 0 24 24" width="14" height="14"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2"/></svg></span>
+            <span class="project__cta" data-en="Visit the site <svg viewBox=&quot;0 0 24 24&quot; width=&quot;14&quot; height=&quot;14&quot;><path d=&quot;M5 12h14M13 6l6 6-6 6&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot;/></svg>" data-ro="Vezi site-ul <svg viewBox=&quot;0 0 24 24&quot; width=&quot;14&quot; height=&quot;14&quot;><path d=&quot;M5 12h14M13 6l6 6-6 6&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot;/></svg>">Vezi site-ul <svg viewBox="0 0 24 24" width="14" height="14"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2"/></svg></span>
           </div>
         </a>
       </li>
 
       <!-- UMF CLUJ RESEARCH -->
       <li class="project reveal" data-accent="#818cf8">
-        <a class="project__link" href="https://umfclujresearch.org" target="_blank" rel="noopener" aria-label="UMF Cluj research platform, opens in a new tab">
+        <a class="project__link" href="https://umfclujresearch.org" target="_blank" rel="noopener" data-aria-en="UMF Cluj Research, opens in a new tab" data-aria-ro="UMF Cluj Research, se deschide într-o filă nouă" aria-label="UMF Cluj Research, se deschide într-o filă nouă">
           <div class="project__media">
-            <img src="assets/umfcluj.jpg" alt="The UMF Cluj research platform home page" class="mock" loading="lazy" width="1400" height="910" />
-            <span class="project__tag">Platform &middot; Education</span>
+            <img src="assets/umfcluj.jpg" alt="UMF Cluj Research" class="mock" loading="lazy" width="1400" height="910" />
+            <span class="project__tag" data-en="Platform &middot; Education" data-ro="Platformă &middot; Educație">Platformă &middot; Educație</span>
           </div>
           <div class="project__body">
             <div class="project__top">
               <h3 class="project__name">UMF Cluj Research</h3>
               <span class="project__year">2026</span>
             </div>
-            <p class="project__desc">A place for medical students to find research to join. Labs and supervisors post open projects, students browse by field and apply in one step, and the whole application flow is handled in the app instead of over email.</p>
-            <p class="project__note">Built independently as a student. Reviewed positively by the Faculty Council, institutional approval pending.</p>
+            <p class="project__desc" data-en="A place for medical students to find research to join. Professors post their open projects, students browse by field and apply in one step." data-ro="Un loc unde studenții la medicină găsesc proiecte de cercetare. Profesorii își postează proiectele deschise, studenții caută după domeniu și aplică într-un singur pas.">Un loc unde studenții la medicină găsesc proiecte de cercetare. Profesorii își postează proiectele deschise, studenții caută după domeniu și aplică într-un singur pas.</p>
+            <p class="project__note" data-en="Built independently as a student. Not an official university platform." data-ro="Construit independent, ca student. Nu este o platformă oficială a universității.">Construit independent, ca student. Nu este o platformă oficială a universității.</p>
             <div class="project__stack">
-              <span>Next.js</span><span>TypeScript</span><span>Tailwind</span><span>Supabase</span><span>Postgres</span>
+              <span>Next.js</span><span>TypeScript</span><span>Supabase</span><span>Postgres</span>
             </div>
-            <span class="project__cta">Visit the site <svg viewBox="0 0 24 24" width="14" height="14"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2"/></svg></span>
+            <span class="project__cta" data-en="Visit the site <svg viewBox=&quot;0 0 24 24&quot; width=&quot;14&quot; height=&quot;14&quot;><path d=&quot;M5 12h14M13 6l6 6-6 6&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot;/></svg>" data-ro="Vezi site-ul <svg viewBox=&quot;0 0 24 24&quot; width=&quot;14&quot; height=&quot;14&quot;><path d=&quot;M5 12h14M13 6l6 6-6 6&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot;/></svg>">Vezi site-ul <svg viewBox="0 0 24 24" width="14" height="14"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2"/></svg></span>
           </div>
         </a>
       </li>
 
       <!-- NORTHLIGHT PSYCHIATRY -->
       <li class="project reveal" data-accent="#7fa593">
-        <a class="project__link" href="work/psychiatry/index.html" target="_blank" rel="noopener" aria-label="Northlight Psychiatry concept, opens in a new tab">
+        <a class="project__link" href="work/psychiatry/index.html" target="_blank" rel="noopener" data-aria-en="Northlight Psychiatry concept, opens in a new tab" data-aria-ro="Conceptul Northlight Psychiatry, se deschide într-o filă nouă" aria-label="Conceptul Northlight Psychiatry, se deschide într-o filă nouă">
           <div class="project__media">
-            <img src="assets/psychiatry.jpg" alt="Northlight Psychiatry, a concept site for a Toronto psychiatry practice" class="mock" loading="lazy" width="1400" height="910" />
-            <span class="project__tag">Concept &middot; Healthcare</span>
+            <img src="assets/psychiatry.jpg" alt="Northlight Psychiatry" class="mock" loading="lazy" width="1400" height="910" />
+            <span class="project__tag" data-en="Concept &middot; Healthcare" data-ro="Concept &middot; Sănătate">Concept &middot; Sănătate</span>
           </div>
           <div class="project__body">
             <div class="project__top">
               <h3 class="project__name">Northlight Psychiatry</h3>
               <span class="project__year">2026</span>
             </div>
-            <p class="project__desc">A concept site for a Toronto psychiatry practice. Calm and unhurried, built around how the practice helps, what the first appointment is like, and an easy way to book.</p>
-            <p class="project__note">A concept with sample content, not a real practice.</p>
+            <p class="project__desc" data-en="A concept site for a psychiatry practice in Toronto. Calm and clear, built around what the practice helps with and an easy way to book." data-ro="Un site concept pentru un cabinet de psihiatrie din Toronto. Calm și clar, construit în jurul a ceea ce tratează cabinetul și al unei programări simple.">Un site concept pentru un cabinet de psihiatrie din Toronto. Calm și clar, construit în jurul a ceea ce tratează cabinetul și al unei programări simple.</p>
+            <p class="project__note" data-en="A concept with sample content, not a real practice." data-ro="Un concept cu conținut de exemplu, nu un cabinet real.">Un concept cu conținut de exemplu, nu un cabinet real.</p>
             <div class="project__stack">
-              <span>Design</span><span>HTML</span><span>CSS</span><span>Responsive</span>
+              <span>Design</span><span>HTML</span><span>CSS</span>
             </div>
-            <span class="project__cta">View the concept <svg viewBox="0 0 24 24" width="14" height="14"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2"/></svg></span>
+            <span class="project__cta" data-en="View the concept <svg viewBox=&quot;0 0 24 24&quot; width=&quot;14&quot; height=&quot;14&quot;><path d=&quot;M5 12h14M13 6l6 6-6 6&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot;/></svg>" data-ro="Vezi conceptul <svg viewBox=&quot;0 0 24 24&quot; width=&quot;14&quot; height=&quot;14&quot;><path d=&quot;M5 12h14M13 6l6 6-6 6&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot;/></svg>">Vezi conceptul <svg viewBox="0 0 24 24" width="14" height="14"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2"/></svg></span>
           </div>
         </a>
       </li>
@@ -192,28 +203,28 @@
   <!-- ABOUT -->
   <section class="section about" id="about">
     <div class="section__head reveal">
-      <span class="label">02 &nbsp;About</span>
-      <h2 class="section__title">Who you would be working with.</h2>
+      <span class="label" data-en="02 &nbsp;About" data-ro="02 &nbsp;Despre">02 &nbsp;Despre</span>
+      <h2 class="section__title" data-en="About me." data-ro="Despre mine.">Despre mine.</h2>
     </div>
 
     <div class="about__bio reveal">
-      <p class="about__lead">I build the whole thing. Design, front end, back end, and the unglamorous parts that keep it running after launch.</p>
-      <p>I am a medical student in Cluj who kept building things on the side until it became the main thing. That mix turns out to be useful: I have built a research platform for a medical university and a concept site for a psychiatry practice, so I am comfortable with the care that health and clinic work needs.</p>
-      <p>I work on my own, so you talk to the person writing the code. I would rather tell you early that something is a bad idea than build it quietly and invoice you for it.</p>
-      <p>When I am not building, I am studying or out running.</p>
+      <p class="about__lead" data-en="I build the whole thing. Design, front end, back end." data-ro="Construiesc tot. Design, front end, back end.">Construiesc tot. Design, front end, back end.</p>
+      <p data-en="I am a medical student in Cluj. I kept building things on the side until it became the main thing." data-ro="Sunt student la medicină în Cluj. Am tot construit site-uri pe lângă facultate, până a devenit lucrul principal.">Sunt student la medicină în Cluj. Am tot construit site-uri pe lângă facultate, până a devenit lucrul principal.</p>
+      <p data-en="I work on my own, so you talk to the person writing the code. If I think an idea is bad, I will say so before I build it." data-ro="Lucrez singur, așa că vorbești direct cu omul care scrie codul. Dacă o idee mi se pare proastă, îți spun înainte să o construiesc.">Lucrez singur, așa că vorbești direct cu omul care scrie codul. Dacă o idee mi se pare proastă, îți spun înainte să o construiesc.</p>
+      <p data-en="When I am not building, I am studying or out running." data-ro="Când nu construiesc, învăț sau alerg.">Când nu construiesc, învăț sau alerg.</p>
     </div>
   </section>
 
   <!-- CONTACT -->
   <section class="section contact" id="contact">
     <div class="contact__inner reveal">
-      <span class="label">03 &nbsp;Contact</span>
-      <h2 class="contact__title">Have something you want built?</h2>
-      <p class="contact__lead">Open to freelance work. Tell me what you have in mind and I will tell you honestly whether I am the right person for it.</p>
-      <a class="contact__mail" href="mailto:hayderahasan@icloud.com?subject=Project%20enquiry">hayderahasan@icloud.com</a>
+      <span class="label" data-en="03 &nbsp;Contact" data-ro="03 &nbsp;Contact">03 &nbsp;Contact</span>
+      <h2 class="contact__title" data-en="Have something you want built?" data-ro="Ai ceva de construit?">Ai ceva de construit?</h2>
+      <p class="contact__lead" data-en="Open for work. Tell me what you need." data-ro="Disponibil pentru proiecte. Spune-mi ce ai nevoie.">Disponibil pentru proiecte. Spune-mi ce ai nevoie.</p>
+      <a class="contact__mail" href="mailto:hayderahasan@icloud.com?subject=Proiect">hayderahasan@icloud.com</a>
 
       <div class="contact__direct">
-        <button type="button" class="btn btn--accent" id="copyMail">Copy email address</button>
+        <button type="button" class="btn btn--accent" id="copyMail" data-en="Copy email address" data-ro="Copiază adresa">Copiază adresa</button>
         <p class="contact__status" id="contactStatus" role="status" aria-live="polite"></p>
       </div>
     </div>
@@ -221,8 +232,8 @@
 
   <footer class="footer">
     <span>&copy; <span id="year">2026</span> Hayder Hasan</span>
-    <span>Built from scratch. No template.</span>
-    <a href="#top">Back to top</a>
+    <span data-en="Built from scratch. No template." data-ro="Construit de la zero. Fără template.">Construit de la zero. Fără template.</span>
+    <a href="#top" data-en="Back to top" data-ro="Sus">Sus</a>
   </footer>
 
   <script src="js/main.js"></script>

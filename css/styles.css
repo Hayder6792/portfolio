@@ -74,6 +74,7 @@ img, svg { display: block; max-width: 100%; }
   padding-top: 14px; padding-bottom: 14px;
 }
 .nav__logo { font-family: var(--serif); font-size: 1.4rem; letter-spacing: .01em; color: var(--text); }
+.nav__logo-short { display: none; }
 .nav__dot { color: var(--muted); }
 .nav__links { display: flex; gap: clamp(20px, 3vw, 36px); font-size: .88rem; color: var(--muted); }
 .nav__links a { position: relative; padding: 4px 0; transition: color .3s var(--ease); }
@@ -83,6 +84,18 @@ img, svg { display: block; max-width: 100%; }
 }
 .nav__links a:hover { color: var(--text); }
 .nav__links a:hover::after { width: 100%; }
+
+/* language switch */
+.nav__right { display: flex; align-items: center; gap: clamp(16px, 2.4vw, 30px); }
+.lang { display: inline-flex; align-items: center; gap: 8px; }
+.lang__btn {
+  background: none; border: 0; padding: 4px 2px; cursor: pointer;
+  font-family: inherit; font-size: .76rem; letter-spacing: .1em; font-weight: 500;
+  color: var(--muted-dim); transition: color .3s var(--ease);
+}
+.lang__btn:hover { color: var(--muted); }
+.lang__btn.is-on { color: var(--text); }
+.lang__sep { width: 1px; height: 11px; background: var(--line); display: block; }
 
 /* ---------- hero ---------- */
 .hero {
@@ -254,7 +267,15 @@ img, svg { display: block; max-width: 100%; }
   body { font-size: 15.5px; }
   .hero { min-height: 88svh; padding-top: 118px; }
   .hero__meta { flex-direction: column; gap: 10px; }
-  .nav__logo { font-size: 1.25rem; }
+  /* the nav carries three links plus the language switch, so the wordmark
+     shortens rather than letting the row overflow on a narrow phone */
+  .nav { padding-left: 16px; padding-right: 16px; }
+  .nav__logo { font-size: 1.2rem; }
+  .nav__logo-full { display: none; }
+  .nav__logo-short { display: inline; }
+  .nav__right { gap: 14px; }
+  .nav__links { gap: 14px; font-size: .8rem; }
+  .lang__btn { font-size: .72rem; letter-spacing: .06em; }
 }
 
 @media (prefers-reduced-motion: reduce) {

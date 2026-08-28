@@ -1,7 +1,7 @@
 /* ============================================================
    Hayder Hasan — portfolio interactions
-   Vanilla JS, no dependencies. Deliberately quiet: a gentle
-   reveal, a nav that settles on scroll, and a copy button.
+   Vanilla JS, no dependencies. Deliberately quiet: a language
+   switch, a gentle reveal, a nav that settles, a copy button.
    Everything degrades gracefully.
    ============================================================ */
 
@@ -9,6 +9,81 @@
   "use strict";
 
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ---------- language ----------
+     Romanian is the default and is what ships in the HTML, so a Romanian
+     visitor never sees a flash of English. English is opt in, via the
+     switch, a saved choice, or ?lang=en. */
+  const DEFAULT_LANG = "ro";
+  const LANGS = ["ro", "en"];
+  const STORE_KEY = "hh-lang";
+
+  const META = {
+    ro: "Web designer și developer în Cluj. Proiecte recente: re.born, Concourse, MatchSpace, UMF Cluj Research și un concept pentru un cabinet de psihiatrie.",
+    en: "Web designer and developer in Cluj. Recent work: re.born, Concourse, MatchSpace, UMF Cluj Research and a Toronto psychiatry concept.",
+  };
+  const COPIED = {
+    ro: "Copiat. Lipește adresa unde îți citești mailul.",
+    en: "Copied. Paste it wherever you read your mail.",
+  };
+
+  let lang = DEFAULT_LANG;
+
+  function readStored() {
+    try { return localStorage.getItem(STORE_KEY); } catch (e) { return null; }
+  }
+  function writeStored(v) {
+    try { localStorage.setItem(STORE_KEY, v); } catch (e) { /* private mode, ignore */ }
+  }
+
+  function pickInitialLang() {
+    const fromUrl = new URLSearchParams(window.location.search).get("lang");
+    if (LANGS.indexOf(fromUrl) !== -1) return fromUrl;
+    const stored = readStored();
+    if (LANGS.indexOf(stored) !== -1) return stored;
+    return DEFAULT_LANG;
+  }
+
+  function applyLang(next, persist) {
+    if (LANGS.indexOf(next) === -1) next = DEFAULT_LANG;
+    lang = next;
+    document.documentElement.lang = next;
+
+    // text content, including the few strings that carry an <em> or an svg
+    document.querySelectorAll("[data-" + next + "]").forEach((el) => {
+      const val = el.getAttribute("data-" + next);
+      if (val !== null) el.innerHTML = val;
+    });
+
+    // accessible names
+    document.querySelectorAll("[data-aria-" + next + "]").forEach((el) => {
+      const val = el.getAttribute("data-aria-" + next);
+      if (val !== null) el.setAttribute("aria-label", val);
+    });
+
+    const desc = document.getElementById("metaDesc");
+    if (desc && META[next]) desc.setAttribute("content", META[next]);
+
+    document.querySelectorAll(".lang__btn").forEach((b) => {
+      const on = b.dataset.lang === next;
+      b.classList.toggle("is-on", on);
+      b.setAttribute("aria-pressed", on ? "true" : "false");
+    });
+
+    // keep the URL shareable without reloading. Romanian is the bare URL.
+    const url = new URL(window.location.href);
+    if (next === DEFAULT_LANG) url.searchParams.delete("lang");
+    else url.searchParams.set("lang", next);
+    window.history.replaceState(null, "", url);
+
+    if (persist) writeStored(next);
+  }
+
+  applyLang(pickInitialLang(), false);
+
+  document.querySelectorAll(".lang__btn").forEach((btn) => {
+    btn.addEventListener("click", () => applyLang(btn.dataset.lang, true));
+  });
 
   /* ---------- year ---------- */
   const yearEl = document.getElementById("year");
@@ -55,7 +130,7 @@
     copyBtn.addEventListener("click", async () => {
       try {
         await navigator.clipboard.writeText(ADDR);
-        status.textContent = "Copied. Paste it wherever you read your mail.";
+        status.textContent = COPIED[lang] || COPIED.ro;
       } catch (err) {
         status.textContent = ADDR;
       }
