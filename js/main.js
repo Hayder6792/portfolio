@@ -1,231 +1,241 @@
-/* ============================================================
-   Hayder Hasan — portfolio interactions
-   Vanilla JS, no dependencies. Everything degrades gracefully.
-   ============================================================ */
-
-(() => {
+/* Hayder Hasan. One file, no dependencies.
+   Nothing here is required for the page to be readable: all content is in the
+   HTML and the only JS-gated styling is scoped under html.js in the stylesheet. */
+(function () {
   "use strict";
 
-  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const canHover = window.matchMedia("(hover: hover)").matches;
+  var EMAIL = "hayderahasan@icloud.com";
+  var mqMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  var mqHover = window.matchMedia("(hover: hover)");
+  var reduceMotion = mqMotion.matches;
 
   /* ---------- year ---------- */
-  const yearEl = document.getElementById("year");
-  if (yearEl) yearEl.textContent = new Date().getFullYear();
-
-  /* ---------- preloader ---------- */
-  const loader = document.getElementById("loader");
-  const countEl = document.getElementById("loaderCount");
-  const barEl = document.getElementById("loaderBar");
-
-  function finishLoad() {
-    document.body.classList.add("is-ready");
-    if (loader) loader.classList.add("is-done");
-  }
-
-  if (loader && !reduceMotion) {
-    let n = 0;
-    const tick = () => {
-      n += Math.max(1, Math.round((100 - n) * 0.08));
-      if (n >= 100) n = 100;
-      countEl.textContent = n;
-      barEl.style.width = n + "%";
-      if (n < 100) {
-        setTimeout(tick, 40 + Math.random() * 50);
-      } else {
-        setTimeout(finishLoad, 350);
-      }
-    };
-    window.addEventListener("load", () => setTimeout(tick, 120));
-    // safety net so the page never stays hidden
-    setTimeout(finishLoad, 4000);
-  } else {
-    finishLoad();
-  }
-
-  /* ---------- custom cursor ---------- */
-  if (canHover) {
-    const cursor = document.querySelector(".cursor");
-    const dot = document.querySelector(".cursor__dot");
-    const ring = document.querySelector(".cursor__ring");
-    let mx = window.innerWidth / 2, my = window.innerHeight / 2;
-    let rx = mx, ry = my;
-
-    window.addEventListener("mousemove", (e) => {
-      mx = e.clientX; my = e.clientY;
-      dot.style.left = mx + "px";
-      dot.style.top = my + "px";
-    });
-
-    const loop = () => {
-      rx += (mx - rx) * 0.16;
-      ry += (my - ry) * 0.16;
-      ring.style.left = rx + "px";
-      ring.style.top = ry + "px";
-      requestAnimationFrame(loop);
-    };
-    loop();
-
-    document.addEventListener("mousedown", () => cursor.classList.add("is-down"));
-    document.addEventListener("mouseup", () => cursor.classList.remove("is-down"));
-
-    const hot = "a, button, [data-magnetic], .project__link";
-    document.querySelectorAll(hot).forEach((el) => {
-      el.addEventListener("mouseenter", () => cursor.classList.add("is-hover"));
-      el.addEventListener("mouseleave", () => cursor.classList.remove("is-hover"));
-    });
-  }
-
-  /* ---------- magnetic elements ---------- */
-  if (canHover && !reduceMotion) {
-    document.querySelectorAll("[data-magnetic]").forEach((el) => {
-      const strength = el.classList.contains("btn") ? 0.4 : 0.28;
-      el.addEventListener("mousemove", (e) => {
-        const r = el.getBoundingClientRect();
-        const x = e.clientX - (r.left + r.width / 2);
-        const y = e.clientY - (r.top + r.height / 2);
-        el.style.transform = `translate(${x * strength}px, ${y * strength}px)`;
-      });
-      el.addEventListener("mouseleave", () => {
-        el.style.transform = "translate(0,0)";
-      });
-    });
-  }
+  var year = document.getElementById("year");
+  if (year) year.textContent = new Date().getFullYear();
 
   /* ---------- scroll progress ---------- */
-  const progress = document.getElementById("progress");
-  const onScroll = () => {
-    const h = document.documentElement;
-    const scrolled = h.scrollTop / (h.scrollHeight - h.clientHeight);
-    if (progress) progress.style.width = (scrolled * 100) + "%";
-  };
-  window.addEventListener("scroll", onScroll, { passive: true });
-  onScroll();
+  var progress = document.getElementById("progress");
+  if (progress) {
+    var ticking = false;
+    var setProgress = function () {
+      var doc = document.documentElement;
+      var max = doc.scrollHeight - doc.clientHeight;
+      var pct = max > 0 ? (doc.scrollTop / max) * 100 : 0;
+      progress.style.width = pct + "%";
+      ticking = false;
+    };
+    window.addEventListener("scroll", function () {
+      if (!ticking) { ticking = true; window.requestAnimationFrame(setProgress); }
+    }, { passive: true });
+    setProgress();
+  }
 
   /* ---------- reveal on scroll ---------- */
-  const reveals = document.querySelectorAll(".reveal");
-  if ("IntersectionObserver" in window && !reduceMotion) {
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
+  var revealables = document.querySelectorAll(".reveal");
+  var showAll = function () {
+    for (var i = 0; i < revealables.length; i++) revealables[i].classList.add("is-in");
+  };
+  // Anything already on screen is shown without waiting for the observer.
+  // This is the safety net: content must never be stuck invisible, whatever
+  // the scroll position is at load (a deep link like /#contact lands mid page).
+  var revealVisible = function () {
+    for (var i = 0; i < revealables.length; i++) {
+      var el = revealables[i];
+      if (el.classList.contains("is-in")) continue;
+      var r = el.getBoundingClientRect();
+      if (r.top < window.innerHeight && r.bottom > 0) el.classList.add("is-in");
+    }
+  };
+
+  if (reduceMotion || !("IntersectionObserver" in window)) {
+    showAll();
+  } else {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
         if (entry.isIntersecting) {
           entry.target.classList.add("is-in");
           io.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
-    reveals.forEach((el) => io.observe(el));
-  } else {
-    reveals.forEach((el) => el.classList.add("is-in"));
+    }, { threshold: 0.1, rootMargin: "0px 0px -6% 0px" });
+    for (var j = 0; j < revealables.length; j++) io.observe(revealables[j]);
+
+    revealVisible();
+    window.addEventListener("load", revealVisible);
+    window.addEventListener("hashchange", revealVisible);
+    // late passes, in case layout or an image settles the scroll position
+    window.setTimeout(revealVisible, 250);
+    window.setTimeout(revealVisible, 1000);
+    window.setTimeout(revealVisible, 2500);
   }
 
   /* ---------- per project accent ---------- */
-  document.querySelectorAll(".project[data-accent]").forEach((el) => {
-    el.style.setProperty("--accent", el.dataset.accent);
-  });
+  var accented = document.querySelectorAll("[data-accent]");
+  for (var k = 0; k < accented.length; k++) {
+    accented[k].style.setProperty("--accent", accented[k].dataset.accent);
+  }
 
-  /* ---------- reactive grid canvas (hero) ---------- */
-  const canvas = document.getElementById("grid");
-  if (canvas && !reduceMotion) {
-    const ctx = canvas.getContext("2d");
-    let w, h, dpr, dots = [];
-    const gap = 38;
-    const mouse = { x: -999, y: -999 };
+  /* ---------- hero dot grid ---------- */
+  var canvas = document.getElementById("grid");
+  var hero = document.querySelector(".hero");
+  if (canvas && hero && !reduceMotion) {
+    var ctx = canvas.getContext("2d");
+    var dots = [];
+    var mouse = { x: -9999, y: -9999 };
+    var w = 0, h = 0;
+    var running = false;
+    var visible = true;
+    var rafId = null;
+
+    // read the brand colour from CSS so retheming the token retints the canvas
+    var bone = (getComputedStyle(document.documentElement)
+      .getPropertyValue("--bone") || "#d8d2c4").trim();
+    var rgb = (function (hex) {
+      var m = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+      return m ? [parseInt(m[1], 16), parseInt(m[2], 16), parseInt(m[3], 16)] : [216, 210, 196];
+    })(bone);
+    var rgbPrefix = "rgba(" + rgb[0] + "," + rgb[1] + "," + rgb[2] + ",";
+
+    var MAX_DOTS = 1200;   // hard cap: a 3440px display used to allocate ~3200
+    var REACH = 150;
 
     function build() {
-      dpr = Math.min(window.devicePixelRatio || 1, 2);
-      w = canvas.clientWidth; h = canvas.clientHeight;
-      canvas.width = w * dpr; canvas.height = h * dpr;
+      w = canvas.clientWidth;
+      h = canvas.clientHeight;
+      if (!w || !h) { dots = []; return; }
+
+      var dpr = Math.min(window.devicePixelRatio || 1, 2);
+      canvas.width = Math.round(w * dpr);
+      canvas.height = Math.round(h * dpr);
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+      // grow the spacing until the grid fits inside the cap
+      var gap = 38;
+      while ((Math.floor(w / gap) * Math.floor(h / gap)) > MAX_DOTS) gap += 4;
+
       dots = [];
-      for (let y = gap; y < h; y += gap) {
-        for (let x = gap; x < w; x += gap) {
-          dots.push({ x, y });
-        }
+      for (var x = gap; x < w; x += gap) {
+        for (var y = gap; y < h; y += gap) dots.push({ x: x, y: y });
       }
     }
 
     function draw() {
+      if (!dots.length) return;
       ctx.clearRect(0, 0, w, h);
-      for (const d of dots) {
-        const dx = d.x - mouse.x;
-        const dy = d.y - mouse.y;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        const reach = 150;
-        let r = 1;
-        let a = 0.16;
-        if (dist < reach) {
-          const f = 1 - dist / reach;
-          r = 1 + f * 2.6;
-          a = 0.16 + f * 0.7;
-        }
+      for (var i = 0; i < dots.length; i++) {
+        var d = dots[i];
+        var dx = d.x - mouse.x, dy = d.y - mouse.y;
+        var dist = Math.sqrt(dx * dx + dy * dy);
+        var t = dist < REACH ? 1 - dist / REACH : 0;
         ctx.beginPath();
-        ctx.arc(d.x, d.y, r, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(216, 210, 196, ${a})`;
+        ctx.arc(d.x, d.y, 1 + t * 2.6, 0, Math.PI * 2);
+        ctx.fillStyle = rgbPrefix + (0.16 + t * 0.7).toFixed(3) + ")";
         ctx.fill();
       }
     }
-    // only animate on real pointer devices; on touch draw one static frame (saves battery)
-    function animate() { draw(); requestAnimationFrame(animate); }
 
-    const heroEl = document.querySelector(".hero");
-    heroEl.addEventListener("mousemove", (e) => {
-      const r = canvas.getBoundingClientRect();
-      mouse.x = e.clientX - r.left;
-      mouse.y = e.clientY - r.top;
-    });
-    heroEl.addEventListener("mouseleave", () => { mouse.x = -999; mouse.y = -999; });
+    function loop() {
+      draw();
+      rafId = window.requestAnimationFrame(loop);
+    }
+    function start() {
+      if (running || !visible || !mqHover.matches) return;
+      running = true; loop();
+    }
+    function stop() {
+      running = false;
+      if (rafId) { window.cancelAnimationFrame(rafId); rafId = null; }
+    }
 
-    let rt;
-    window.addEventListener("resize", () => { clearTimeout(rt); rt = setTimeout(() => { build(); if (!canHover) draw(); }, 150); });
     build();
-    if (canHover) animate(); else draw();
+    draw();
+
+    // never burn frames on a hero that is scrolled out of view
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(function (entries) {
+        visible = entries[0].isIntersecting;
+        if (visible) start(); else stop();
+      }, { threshold: 0 }).observe(hero);
+    } else {
+      start();
+    }
+
+    if (mqHover.matches) {
+      hero.addEventListener("mousemove", function (e) {
+        var r = canvas.getBoundingClientRect();
+        mouse.x = e.clientX - r.left;
+        mouse.y = e.clientY - r.top;
+      }, { passive: true });
+      hero.addEventListener("mouseleave", function () {
+        mouse.x = -9999; mouse.y = -9999;
+      });
+    }
+
+    var resizeTimer;
+    window.addEventListener("resize", function () {
+      window.clearTimeout(resizeTimer);
+      resizeTimer = window.setTimeout(function () { build(); draw(); }, 150);
+    });
   }
 
-  /* ---------- contact form ---------- */
-  const cform = document.getElementById("contactForm");
-  if (cform) {
-    const status = document.getElementById("contactStatus");
-    cform.addEventListener("submit", async (e) => {
+  /* ---------- contact form ----------
+     The action still carries the REPLACE sentinel, so this composes a mail
+     message instead of posting. Paste a real endpoint in and the fetch path
+     takes over with no other change. */
+  var form = document.getElementById("contactForm");
+  var status = document.getElementById("contactStatus");
+  if (form) {
+    form.addEventListener("submit", function (e) {
       e.preventDefault();
-      const action = cform.getAttribute("action") || "";
-      if (action.indexOf("REPLACE") !== -1) {
-        // form backend not connected yet: fall back to composing an email
-        const val = (n) => { const el = cform.querySelector('[name="' + n + '"]'); return el ? el.value : ""; };
-        const subject = encodeURIComponent("Enquiry from " + (val("name") || "your site"));
-        const body = encodeURIComponent((val("message") || "") + "\n\nFrom: " + (val("email") || ""));
-        window.location.href = "mailto:hayderahasan@icloud.com?subject=" + subject + "&body=" + body;
-        status.textContent = "Opening your email app…";
+      if (!form.checkValidity()) {
+        if (status) status.textContent = "Please fill in all three fields.";
+        form.reportValidity();
         return;
       }
-      if (!cform.checkValidity()) { status.textContent = "Please fill in every field."; return; }
-      status.textContent = "Sending…";
-      try {
-        const res = await fetch(action, {
-          method: "POST",
-          body: new FormData(cform),
-          headers: { Accept: "application/json" },
-        });
-        if (res.ok) { cform.reset(); status.textContent = "Thanks. I will get back to you soon."; }
-        else { status.textContent = "Something went wrong. Email me at hayderahasan@icloud.com."; }
-      } catch (err) {
-        status.textContent = "Something went wrong. Email me at hayderahasan@icloud.com.";
+      var name = form.elements.name.value.trim();
+      var email = form.elements.email.value.trim();
+      var message = form.elements.message.value.trim();
+      var action = form.getAttribute("action") || "";
+
+      if (action.indexOf("REPLACE") !== -1) {
+        var subject = encodeURIComponent("Enquiry from " + name);
+        var body = encodeURIComponent(message + "\n\nFrom: " + name + " <" + email + ">");
+        if (status) status.textContent = "Opening your email app with this message ready to send.";
+        window.location.href = "mailto:" + EMAIL + "?subject=" + subject + "&body=" + body;
+        return;
       }
+
+      if (status) status.textContent = "Sending.";
+      fetch(action, {
+        method: "POST",
+        body: new FormData(form),
+        headers: { Accept: "application/json" }
+      }).then(function (res) {
+        if (!res.ok) throw new Error("bad response");
+        form.reset();
+        if (status) status.textContent = "Thank you. I will get back to you soon.";
+      }).catch(function () {
+        if (status) status.textContent = "That did not send. Write to " + EMAIL + " directly.";
+      });
     });
   }
 
-  /* ---------- smooth anchor offset for fixed nav ---------- */
-  document.querySelectorAll('a[href^="#"]').forEach((a) => {
-    a.addEventListener("click", (e) => {
-      const id = a.getAttribute("href");
-      if (id.length < 2) return;
-      const behavior = reduceMotion ? "auto" : "smooth";
-      // #top is the fixed nav, which scrollIntoView treats as always visible, so jump to page top
-      if (id === "#top") { e.preventDefault(); window.scrollTo({ top: 0, behavior: behavior }); return; }
-      if (id === "#") return;
-      const target = document.querySelector(id);
+  /* ---------- smooth anchors ---------- */
+  var anchors = document.querySelectorAll('a[href^="#"]');
+  for (var a = 0; a < anchors.length; a++) {
+    anchors[a].addEventListener("click", function (e) {
+      var href = this.getAttribute("href");
+      if (!href || href.length < 2) return;
+      var behavior = mqMotion.matches ? "auto" : "smooth";
+      if (href === "#top") {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: behavior });
+        return;
+      }
+      var target = document.querySelector(href);
       if (!target) return;
       e.preventDefault();
-      target.scrollIntoView({ behavior: behavior });
+      target.scrollIntoView({ behavior: behavior, block: "start" });
     });
-  });
+  }
 })();

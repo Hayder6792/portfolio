@@ -30,6 +30,12 @@
     .btn--ghost:hover{border-color:var(--accent);color:var(--accent)}
 
     /* nav */
+    /* concept banner, so the label travels with the page */
+    .conceptbar{background:var(--ink);color:var(--paper);
+      font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;text-align:center;
+      padding:10px 16px;line-height:1.5}
+    .conceptbar a{color:var(--paper);text-decoration:underline;text-underline-offset:3px}
+    @media(max-width:520px){.conceptbar{font-size:.66rem;letter-spacing:.1em}}
     .nav{position:sticky;top:0;z-index:50;background:rgba(245,246,241,.84);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
     .nav__in{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:18px clamp(20px,5vw,56px)}
     .brand{font-family:"Cormorant Garamond",serif;font-size:1.5rem;font-weight:600;letter-spacing:.02em;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -108,6 +114,8 @@
   </style>
 </head>
 <body>
+  <p class="conceptbar">Concept site. Not a real practice. The details on this page are invented. <a href="../../index.html">Back to hayderahasan.com</a></p>
+
   <header class="nav">
     <div class="nav__in">
       <a href="#" class="brand">Northlight <b>Psychiatry</b></a>
